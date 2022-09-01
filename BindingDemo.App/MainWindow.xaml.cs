@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
@@ -32,14 +31,12 @@ public partial class MainWindow : Window, INotifyPropertyChanged
 
     private void ButtonExport_OnClick(object sender, RoutedEventArgs e)
     {
-        using var file = new StreamWriter("name.dat", false);
-        file.WriteLine(FirstName);
+        FirstNameModel.Export(FirstName);
     }
 
     private void ButtonImport_OnClick(object sender, RoutedEventArgs e)
     {
-        using var file = new StreamReader("name.dat");
-        FirstName = file.ReadLine();
+        FirstName = FirstNameModel.Import();
     }
 
     public event PropertyChangedEventHandler? PropertyChanged;
